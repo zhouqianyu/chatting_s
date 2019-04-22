@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chatting.dao.IMessageDao">
+    <insert id="insertNewMessage" parameterType="com.chatting.model.ChattingLog">
+        INSERT into chatting_log(uuid_from, uuid_to, message, created_at, is_delivery)
+        values (#{log.uuid_from}, #{log.uuid_to}, #{log.message}, #{log.created_at}, 0)
+    </insert>
+</mapper>

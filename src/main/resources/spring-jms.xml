@@ -16,10 +16,10 @@
     </bean>
     <bean id="messageListener" class="com.chatting.listener.CustomerMessageListener">
     </bean>
-    <bean id="defaultDestination" class="org.apache.activemq.command.ActiveMQQueue" scope="session">
+    <bean id="defaultDestination" class="org.apache.activemq.command.ActiveMQTopic" scope="session">
         <aop:scoped-proxy/>
         <constructor-arg>
-            <value> queue </value>
+            <value> topic </value>
         </constructor-arg>
     </bean>
 
