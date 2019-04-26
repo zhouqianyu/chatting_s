@@ -3,6 +3,16 @@
 <mapper namespace="com.chatting.dao.IMessageDao">
     <insert id="insertNewMessage" parameterType="com.chatting.model.ChattingLog">
         INSERT into chatting_log(uuid_from, uuid_to, message, created_at, is_delivery)
-        values (#{log.uuid_from}, #{log.uuid_to}, #{log.message}, #{log.created_at}, 0)
+        values (#{uuid_from}, #{uuid_to}, #{message}, #{created_at}, 0)
+        <selectKey resultType="integer" keyProperty="id" order="AFTER">
+            SELECT LAST_INSERT_ID();
+        </selectKey>
     </insert>
+    <select id="getMessageByToUuid" resultType="com.chatting.model.ChattingLog">
+        select * from chatting_log where uuid_to = #{uuid_to};
+    </select>
+    <select id="getMessage" resultType="com.chatting.model.ChattingLog">
+        select * from chatting_log where uuid_from = #{fromUuid} and uuid_to = #{toUuid} or
+                                         uuid_from = #{toUuid} and uuid_to = #{fromUuid} order by created_at desc;
+    </select>
 </mapper>

@@ -1,7 +1,9 @@
 package com.chatting.model;
 
-import java.util.Date;
+import org.apache.ibatis.type.Alias;
 
+import java.util.Date;
+@Alias("chattingLog")
 public class ChattingLog {
     private int id, is_delivery;
     private String uuid_to;

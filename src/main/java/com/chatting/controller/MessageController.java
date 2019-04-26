@@ -1,5 +1,7 @@
 package com.chatting.controller;
 
+import com.chatting.model.ChattingLog;
+import com.chatting.model.Friend;
 import com.chatting.service.IMessageService;
 import com.chatting.util.ResponseData;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping("/message")
@@ -19,12 +23,27 @@ public class MessageController {
     @Resource
     ResponseData responseData;
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String sendMessage(@RequestParam String toUuid, @RequestParam String message){
+    public String sendMessage(@RequestParam String toUuid,
+                              @RequestParam String message, HttpServletRequest request){
         try {
-            service.sendMessage("123", toUuid, message);
+            String fromUuid = (String) request.getAttribute("uuid");
+            if(service.sendMessage(fromUuid, toUuid, message))
             return responseData.successed(null);
+            else return responseData.unKnowError();
         }catch (Exception e){
             return responseData.unKnowError();
         }
+    }
+    @RequestMapping(value = "/friends", method = RequestMethod.POST)
+    public String getFriendsAndMessages(@RequestParam String uuid){
+        List<Friend> results = service.getFriendsAndMessages(uuid);
+        return responseData.assembleCallBack(200, "success", results);
+    }
+
+    @RequestMapping(value = "/getMessage", method = RequestMethod.POST)
+    public String getMessageByUUid(@RequestParam String uuid, HttpServletRequest request){
+        String my_uuid = (String) request.getAttribute("uuid");
+        List<ChattingLog> results = service.getMessage(uuid, my_uuid);
+        return responseData.assembleCallBack(200 ,"success", results);
     }
 }

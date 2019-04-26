@@ -18,8 +18,7 @@ public class ProducerService implements IProducerService {
         try {
             jmsTemplate.send(destination, new MessageCreator() {
                 public Message createMessage(Session session) throws JMSException {
-                    session.createTextMessage(message);
-                    return null;
+                    return session.createTextMessage(message);
                 }
             });
         }

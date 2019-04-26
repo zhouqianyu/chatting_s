@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chatting.dao.IFriendDao">
+    <resultMap id="friendMessageMap" type="com.chatting.model.Friend">
+        <id property="id" column="id"/>
+        <result property="uuid_first" column="uuid_first"/>
+        <result property="uuid_second" column="uuid_second"/>
+        <association property="user" select="com.chatting.dao.IUserDao.getUserByUuid" column="uuid_second"/>
+        <collection property="chattingLogs" select="com.chatting.dao.IMessageDao.getMessageByToUuid"
+                    column="uuid_first"/>
+    </resultMap>
+    <select id="selectFriendByMyUuid" resultMap="friendMessageMap">
+        select id, uuid_first, uuid_second from friend where uuid_first = #{uuid};
+    </select>
+</mapper>

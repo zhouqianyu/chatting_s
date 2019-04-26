@@ -1,15 +1,12 @@
 package com.chatting.controller;
 
 
-import com.chatting.service.UserService;
-import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.ActiveMQMessageConsumer;
-import org.apache.activemq.command.ActiveMQQueue;
+import com.chatting.service.IUserService;
+import com.chatting.util.Cache;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
 import org.springframework.jms.listener.DefaultMessageListenerContainer;
-import org.springframework.jms.listener.MessageListenerContainer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,22 +21,15 @@ import javax.jms.*;
 @ResponseBody
 public class UserController {
     @Resource
-    UserService userService;
+    IUserService IUserService;
     @Resource
     JmsTemplate jmsTemplate;
     @Resource
-    DefaultMessageListenerContainer container;
-    @Resource
-    MessageListener listener;
-    @RequestMapping(value = "/select", method = RequestMethod.GET)
-    public String select(@RequestParam String username){
-        return userService.getPasswordByUserName(username);
-    }
+    Cache cache;
     @RequestMapping(value = "/connection", method = RequestMethod.GET)
     public String connection(@RequestParam String username){
-        container.setDestinationName(username);
-        container.start();
-        return "123";
+        boolean result = cache.set("username",username);
+        return result+"";
     }
     @RequestMapping(value = "/send", method = RequestMethod.GET)
     public String send(@RequestParam String username, @RequestParam final String message){

@@ -1,15 +1,30 @@
 package com.chatting.model;
 
-public class User {
-    private int id;
-    private String username, password;
+import org.apache.ibatis.type.Alias;
 
-    public int getId() {
-        return id;
+import java.util.List;
+
+@Alias("user")
+public class User {
+    private String uuid;
+    private String username;
+    private String password;
+    private String salt;
+    List<Friend> friends;
+    public String getSalt() {
+        return salt;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getId() {
+        return uuid;
+    }
+
+    public void setId(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getUsername() {

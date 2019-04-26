@@ -22,7 +22,15 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-
+    <!--登录验证拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**/"/>
+            <mvc:exclude-mapping path="/login"/>
+            <mvc:exclude-mapping path="/user/*"/>
+            <bean class="com.chatting.interceptor.TokenInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
     <!-- 静态资源默认servlet配置 -->
     <mvc:default-servlet-handler/>
 

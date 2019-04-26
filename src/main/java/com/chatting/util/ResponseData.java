@@ -7,20 +7,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class ResponseData {
     public String successed(String data){
-        return assemble(200,"success", data);
+        return assembleCallBack(200,"success", data);
     }
     public String failed(String data){
-        return assemble(403,"Forbidden", data);
+        return assembleCallBack(403,"Forbidden", data);
     }
     public String unauthorized(String data){
-        return assemble(402,"fail", data);
+        return assembleCallBack(402,"fail", data);
     }
     public String unKnowError(){
-        return assemble(500,"unknown error",null);
+        return assembleCallBack(500,"unknown error",null);
     }
-    public String assemble(int code, String msg, Object data) {
+    public String assembleCallBack(int code, String msg, Object data) {
         CallBackCriteria callBackCriteria = new CallBackCriteria(code, msg, data);
         return parse(callBackCriteria);
+    }
+    public String assembleMessage(int id, String message){
+        MessageCriteria criteria = new MessageCriteria(id, message);
+        return parse(criteria);
     }
 
     private String parse(Object object) {
@@ -56,6 +60,22 @@ public class ResponseData {
             return data;
         }
     }
+    private class MessageCriteria{
+        int id;
+        String message;
 
+        public MessageCriteria(int id, String message) {
+            this.id = id;
+            this.message = message;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+    }
 
 }
