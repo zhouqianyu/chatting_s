@@ -41,7 +41,7 @@ public class UserController {
         return "123";
     }
 
-    @RequestMapping(value = "con2", method = RequestMethod.GET)
+    @RequestMapping(value = "con2")
     public String con2(@RequestParam String username){
 
         return "123";
