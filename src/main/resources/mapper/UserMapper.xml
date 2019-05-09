@@ -5,6 +5,9 @@
         select * from user where username = #{username};
     </select>
     <select id="getUserByUuid" resultType="com.chatting.model.User">
-        select * from user where uuid= #{uuid};
+        select uuid, username, img_url from user where uuid= #{uuid};
+    </select>
+    <select id="getFriendByUuid" resultType="com.chatting.model.User">
+        select * from friend where uuid_first
     </select>
 </mapper>

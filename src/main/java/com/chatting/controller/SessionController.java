@@ -24,7 +24,7 @@ public class SessionController {
     public String login(@RequestParam String username, @RequestParam String password){
         User user = userService.verifyPassword(username, password);
         if(user!=null) {
-            token.put("username", user.getUsername()).put("uuid", user.getId());
+            token.put("username", user.getUsername()).put("uuid", user.getUuid());
             String result = token.build();
             return responseData.successed(result);
         }else {

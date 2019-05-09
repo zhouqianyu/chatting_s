@@ -19,11 +19,11 @@ public class User {
         this.salt = salt;
     }
 
-    public String getId() {
+    public String getUuid() {
         return uuid;
     }
 
-    public void setId(String uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 

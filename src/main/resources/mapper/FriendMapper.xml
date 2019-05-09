@@ -9,7 +9,15 @@
         <collection property="chattingLogs" select="com.chatting.dao.IMessageDao.getMessageByToUuid"
                     column="uuid_first"/>
     </resultMap>
+    <resultMap id="friendMap" type="com.chatting.model.Friend">
+        <id property="id" column="id"/>
+        <id property="uuid_second" column="uuid_second"/>
+        <association property="user" column="uuid_second" select="com.chatting.dao.IUserDao.getUserByUuid"/>
+    </resultMap>
     <select id="selectFriendByMyUuid" resultMap="friendMessageMap">
         select id, uuid_first, uuid_second from friend where uuid_first = #{uuid};
+    </select>
+    <select id="getFriendByUuid" resultMap="friendMap">
+       select id, uuid_first, uuid_second from friend where uuid_first = #{uuid};
     </select>
 </mapper>

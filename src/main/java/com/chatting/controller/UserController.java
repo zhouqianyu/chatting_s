@@ -1,8 +1,10 @@
 package com.chatting.controller;
 
 
+import com.chatting.model.Friend;
 import com.chatting.service.IUserService;
 import com.chatting.util.Cache;
+import com.chatting.util.ResponseData;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 
@@ -15,17 +17,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.jms.*;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
 @ResponseBody
 public class UserController {
     @Resource
-    IUserService IUserService;
+    IUserService userService;
     @Resource
     JmsTemplate jmsTemplate;
     @Resource
     Cache cache;
+    @Resource
+    ResponseData data;
     @RequestMapping(value = "/connection", method = RequestMethod.GET)
     public String connection(@RequestParam String username){
         boolean result = cache.set("username",username);
@@ -45,5 +50,11 @@ public class UserController {
     public String con2(@RequestParam String username){
 
         return "123";
+    }
+
+    @RequestMapping(value = "/friends", method = RequestMethod.POST)
+    public String getFriends(String uuid){
+        List<Friend> friends = userService.getFriends(uuid);
+        return data.assembleCallBack(200, "success", friends);
     }
 }

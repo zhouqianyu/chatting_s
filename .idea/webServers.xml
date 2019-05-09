@@ -10,6 +10,14 @@
           <option name="port" value="2222" />
         </fileTransfer>
       </webServer>
+      <webServer id="b9924335-110f-491d-b276-268aef62bf0b" name="gpu" url="http://39.104.123.177">
+        <fileTransfer host="39.104.123.177" port="22" rootFolder="/root/code" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
