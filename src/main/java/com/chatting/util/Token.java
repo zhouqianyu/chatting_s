@@ -47,7 +47,7 @@ public class Token {
             claims.put("session", session);
             String json = mapper.writeValueAsString(claims);
             token = JWT.create().withClaim("payload", json).sign(algorithm);
-//            cache.set(TOKEN_PREFIX + claims.get("uuid"), token);
+            cache.set(TOKEN_PREFIX + claims.get("uuid"), token);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
@@ -68,8 +68,8 @@ public class Token {
             mapper = new ObjectMapper();
             map = mapper.readValue(payload, Map.class);
             if (map != null) {
-//                Object userToken = cache.get(TOKEN_PREFIX + map.get("uuid"));
-//                if (userToken!=null&&userToken.equals(token)) return map;
+                Object userToken = cache.get(TOKEN_PREFIX + map.get("uuid"));
+                if (userToken!=null&&userToken.equals(token)) return map;
                 return map;
             } else return null;
         } catch (JWTVerificationException e) {
