@@ -10,6 +10,15 @@ public class User {
     private String password;
     private String salt;
     private String img_url;
+    private String describe;
+
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
+    }
 
     public String getImg_url() {
         return img_url;
