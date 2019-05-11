@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.jms.*;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -53,7 +54,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/friends", method = RequestMethod.POST)
-    public String getFriends(String uuid){
+    public String getFriends(HttpServletRequest request){
+        String uuid = (String) request.getAttribute("uuid");
         List<Friend> friends = userService.getFriends(uuid);
         return data.assembleCallBack(200, "success", friends);
     }
