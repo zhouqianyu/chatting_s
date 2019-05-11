@@ -27,7 +27,6 @@
         <mvc:interceptor>
             <mvc:mapping path="/**/"/>
             <mvc:exclude-mapping path="/login"/>
-            <mvc:exclude-mapping path="/*"/>
             <bean class="com.chatting.interceptor.TokenInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
