@@ -35,7 +35,8 @@ public class MessageController {
         }
     }
     @RequestMapping(value = "/friends", method = RequestMethod.POST)
-    public String getFriendsAndMessages(@RequestParam String uuid){
+    public String getFriendsAndMessages(HttpServletRequest request){
+        String uuid = (String) request.getAttribute("uuid");
         List<Friend> results = service.getFriendsAndMessages(uuid);
         return responseData.assembleCallBack(200, "success", results);
     }

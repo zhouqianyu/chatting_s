@@ -2,7 +2,6 @@ package com.chatting.model;
 
 import org.apache.ibatis.type.Alias;
 
-import java.util.List;
 
 @Alias("user")
 public class User {
@@ -10,7 +9,16 @@ public class User {
     private String username;
     private String password;
     private String salt;
-    List<Friend> friends;
+    private String img_url;
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
+    }
+
     public String getSalt() {
         return salt;
     }
