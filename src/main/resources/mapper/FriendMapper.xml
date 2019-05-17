@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chatting.dao.IFriendDao">
-    <resultMap id="friendMessageMap" type="com.chatting.model.Friend">
-        <id property="id" column="id"/>
-        <result property="uuid_first" column="uuid_first"/>
-        <result property="uuid_second" column="uuid_second"/>
-        <association property="user" select="com.chatting.dao.IUserDao.getUserByUuid" column="uuid_second"/>
-        <collection property="chattingLogs" select="com.chatting.dao.IMessageDao.getMessageByToUuid"
-                    column="uuid_first"/>
-    </resultMap>
     <resultMap id="friendMap" type="com.chatting.model.Friend">
         <id property="id" column="id"/>
         <id property="uuid_second" column="uuid_second"/>
         <association property="user" column="uuid_second" select="com.chatting.dao.IUserDao.getUserByUuid"/>
     </resultMap>
-    <select id="selectFriendByMyUuid" resultMap="friendMessageMap">
-        select id, uuid_first, uuid_second from friend where uuid_first = #{uuid};
+    <select id="selectFriendByMyUuid" resultType="com.chatting.model.HistoryMessage">
+        select username,message, img_url,created_at,is_delivery,uuid_from as friend_uuid, chatting_log.id as id from user,friend
+        left join chatting_log on friend.uuid_second = chatting_log.uuid_from
+        where
+            friend.uuid_first = #{uuid} and friend.uuid_second=user.uuid and message is not null
+        group by username
+        order by created_at desc
     </select>
     <select id="getFriendByUuid" resultMap="friendMap">
        select id, uuid_first, uuid_second from friend where uuid_first = #{uuid};

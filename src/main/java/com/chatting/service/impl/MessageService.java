@@ -4,15 +4,19 @@ import com.chatting.dao.IFriendDao;
 import com.chatting.dao.IMessageDao;
 import com.chatting.model.ChattingLog;
 import com.chatting.model.Friend;
+import com.chatting.model.HistoryMessage;
 import com.chatting.service.IMessageService;
 import com.chatting.util.ResponseData;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Service("MessageService")
+@Transactional
 public class MessageService implements IMessageService {
     @Resource
     ProducerService producer;
@@ -36,11 +40,11 @@ public class MessageService implements IMessageService {
         }else return false;
     }
 
-    public List<Friend> getFriendsAndMessages(String uuid) {
+    public List<HistoryMessage> getFriendsAndMessages(String uuid) {
         return friendDao.selectFriendByMyUuid(uuid);
     }
-
     public List<ChattingLog> getMessage(String fromUuid, String toUuid) {
+        dao.updateIsDelivery(toUuid, fromUuid);
         return dao.getMessage(fromUuid, toUuid);
     }
 }

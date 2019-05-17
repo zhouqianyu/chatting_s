@@ -15,6 +15,7 @@ public class TokenInterceptor implements HandlerInterceptor {
     private Token token;
     @Resource
     private ResponseData responseData;
+
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
 
         httpServletResponse.setCharacterEncoding("utf-8");
@@ -22,12 +23,12 @@ public class TokenInterceptor implements HandlerInterceptor {
         if (token != null && !token.equals("")) {
             Map<String, Object> user = this.token.verify(token);
             if (user != null) {
-                httpServletRequest.setAttribute("uuid",user.get("uuid"));
-                httpServletRequest.setAttribute("username",user.get("username"));
+                httpServletRequest.setAttribute("uuid", user.get("uuid"));
+                httpServletRequest.setAttribute("username", user.get("username"));
                 return true;
             }
         }
-        httpServletResponse.getWriter().write(responseData.assembleCallBack(401,"please login in",null));
+        httpServletResponse.getWriter().write(responseData.assembleCallBack(401, "please login in", null));
         return false;
     }
 

@@ -71,6 +71,7 @@ public class Token {
                 Object userToken = cache.get(TOKEN_PREFIX + map.get("uuid"));
                 if (userToken!=null&&userToken.equals(token)) return map;
             } else return null;
+//            return map;
         } catch (JWTVerificationException e) {
             logger.error(e.getMessage());
             return null;

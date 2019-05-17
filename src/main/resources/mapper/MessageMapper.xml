@@ -13,6 +13,9 @@
     </select>
     <select id="getMessage" resultType="com.chatting.model.ChattingLog">
         select * from chatting_log where uuid_from = #{fromUuid} and uuid_to = #{toUuid} or
-                                         uuid_from = #{toUuid} and uuid_to = #{fromUuid} order by created_at desc limit 1;
+                                         uuid_from = #{toUuid} and uuid_to = #{fromUuid} order by created_at desc;
     </select>
+    <update id="updateIsDelivery">
+        update chatting_log set is_delivery = 1 where uuid_from = #{friendUuid} and uuid_to=#{myUuid};
+    </update>
 </mapper>

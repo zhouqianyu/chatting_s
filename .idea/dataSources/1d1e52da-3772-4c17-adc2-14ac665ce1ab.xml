@@ -10,7 +10,7 @@
     <schema id="2" parent="1" name="chatting">
       <Current>1</Current>
       <Visible>1</Visible>
-      <Collation>utf8_bin</Collation>
+      <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="3" parent="1" name="information_schema">
       <Collation>utf8_general_ci</Collation>
@@ -912,9 +912,15 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="229" parent="2" name="chatting_log"/>
-    <table id="230" parent="2" name="friend"/>
-    <table id="231" parent="2" name="user"/>
+    <table id="229" parent="2" name="chatting_log">
+      <Collation>utf8_bin</Collation>
+    </table>
+    <table id="230" parent="2" name="friend">
+      <Collation>utf8_bin</Collation>
+    </table>
+    <table id="231" parent="2" name="user">
+      <Collation>utf8_bin</Collation>
+    </table>
     <column id="232" parent="229" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
@@ -924,13 +930,13 @@
     </column>
     <column id="233" parent="229" name="uuid_from">
       <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="234" parent="229" name="uuid_to">
       <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -943,7 +949,6 @@
     <column id="236" parent="229" name="created_at">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="237" parent="229" name="is_delivery">
@@ -966,13 +971,11 @@
     <column id="240" parent="230" name="uuid_first">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="241" parent="230" name="uuid_second">
       <Position>3</Position>
       <DataType>varchar(32)|0s</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="242" parent="230" name="PRIMARY">
@@ -982,7 +985,7 @@
     </key>
     <column id="243" parent="231" name="uuid">
       <Position>1</Position>
-      <DataType>varchar(35)|0s</DataType>
+      <DataType>char(35)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1000,16 +1003,20 @@
     </column>
     <column id="246" parent="231" name="salt">
       <Position>4</Position>
-      <DataType>varchar(8)|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="247" parent="231" name="img_url">
       <Position>5</Position>
-      <DataType>varchar(500)|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="248" parent="231" name="PRIMARY">
+    <column id="248" parent="231" name="describe">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="249" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>uuid</ColNames>
       <Primary>1</Primary>

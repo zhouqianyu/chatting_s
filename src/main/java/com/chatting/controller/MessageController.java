@@ -1,7 +1,7 @@
 package com.chatting.controller;
 
 import com.chatting.model.ChattingLog;
-import com.chatting.model.Friend;
+import com.chatting.model.HistoryMessage;
 import com.chatting.service.IMessageService;
 import com.chatting.util.ResponseData;
 import org.springframework.stereotype.Controller;
@@ -22,29 +22,31 @@ public class MessageController {
     IMessageService service;
     @Resource
     ResponseData responseData;
+
     @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String sendMessage(@RequestParam String toUuid,
-                              @RequestParam String message, HttpServletRequest request){
+                              @RequestParam String message, HttpServletRequest request) {
         try {
             String fromUuid = (String) request.getAttribute("uuid");
-            if(service.sendMessage(fromUuid, toUuid, message))
-            return responseData.successed(null);
+            if (service.sendMessage(fromUuid, toUuid, message))
+                return responseData.successed(null);
             else return responseData.unKnowError();
-        }catch (Exception e){
+        } catch (Exception e) {
             return responseData.unKnowError();
         }
     }
+
     @RequestMapping(value = "/friends", method = RequestMethod.POST)
-    public String getFriendsAndMessages(HttpServletRequest request){
+    public String getFriendsAndMessages(HttpServletRequest request) {
         String uuid = (String) request.getAttribute("uuid");
-        List<Friend> results = service.getFriendsAndMessages(uuid);
+        List<HistoryMessage> results = service.getFriendsAndMessages(uuid);
         return responseData.assembleCallBack(200, "success", results);
     }
 
     @RequestMapping(value = "/getMessage", method = RequestMethod.POST)
-    public String getMessageByUUid(@RequestParam String uuid, HttpServletRequest request){
+    public String getMessageByUUid(@RequestParam String uuid, HttpServletRequest request) {
         String my_uuid = (String) request.getAttribute("uuid");
         List<ChattingLog> results = service.getMessage(uuid, my_uuid);
-        return responseData.assembleCallBack(200 ,"success", results);
+        return responseData.assembleCallBack(200, "success", results);
     }
 }

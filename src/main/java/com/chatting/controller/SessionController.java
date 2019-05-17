@@ -1,5 +1,6 @@
 package com.chatting.controller;
 
+import com.chatting.model.LoginCallBack;
 import com.chatting.model.User;
 import com.chatting.service.IUserService;
 import com.chatting.util.ResponseData;
@@ -20,14 +21,19 @@ public class SessionController {
     Token token;
     @Resource
     ResponseData responseData;
+
     @RequestMapping(value = "/login")
-    public String login(@RequestParam String username, @RequestParam String password){
+    public String login(@RequestParam String username, @RequestParam String password) {
         User user = userService.verifyPassword(username, password);
-        if(user!=null) {
+        if (user != null) {
             token.put("username", user.getUsername()).put("uuid", user.getUuid());
             String result = token.build();
-            return responseData.successed(result);
-        }else {
+            String img_url = user.getImg_url();
+            LoginCallBack callBack = new LoginCallBack();
+            callBack.setToken(result);
+            callBack.setImg_url(img_url);
+            return responseData.assembleCallBack(200, "success", callBack);
+        } else {
             return responseData.failed("username or password wrong");
         }
     }

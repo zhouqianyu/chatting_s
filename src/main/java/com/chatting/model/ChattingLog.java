@@ -3,6 +3,7 @@ package com.chatting.model;
 import org.apache.ibatis.type.Alias;
 
 import java.util.Date;
+
 @Alias("chattingLog")
 public class ChattingLog {
     private int id, is_delivery;

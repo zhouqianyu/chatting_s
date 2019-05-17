@@ -1,10 +1,12 @@
 package com.chatting.dao;
 
 import com.chatting.model.Friend;
+import com.chatting.model.HistoryMessage;
 
 import java.util.List;
 
 public interface IFriendDao {
-    List<Friend> selectFriendByMyUuid(String uuid);
+    List<HistoryMessage> selectFriendByMyUuid(String uuid);
+
     List<Friend> getFriendByUuid(String uuid);
 }

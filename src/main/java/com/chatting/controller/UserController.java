@@ -2,21 +2,20 @@ package com.chatting.controller;
 
 
 import com.chatting.model.Friend;
+import com.chatting.model.User;
 import com.chatting.service.IUserService;
 import com.chatting.util.Cache;
+import com.chatting.util.RandomString;
 import com.chatting.util.ResponseData;
+import com.sun.istack.internal.Nullable;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
 
-import org.springframework.jms.listener.DefaultMessageListenerContainer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.jms.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -32,31 +31,45 @@ public class UserController {
     Cache cache;
     @Resource
     ResponseData data;
-    @RequestMapping(value = "/connection", method = RequestMethod.GET)
-    public String connection(@RequestParam String username){
-        boolean result = cache.set("username",username);
-        return result+"";
-    }
-    @RequestMapping(value = "/send", method = RequestMethod.GET)
-    public String send(@RequestParam String username, @RequestParam final String message){
-        jmsTemplate.send(username, new MessageCreator() {
-            public Message createMessage(Session session) throws JMSException {
-                return session.createTextMessage(message);
-            }
-        });
-        return "123";
-    }
-
-    @RequestMapping(value = "con2", method = RequestMethod.POST)
-    public String con2(@RequestParam String username){
-
-        return "123";
-    }
+    @Resource
+    RandomString randomString;
 
     @RequestMapping(value = "/friends", method = RequestMethod.POST)
-    public String getFriends(HttpServletRequest request){
+    public String getFriends(HttpServletRequest request) {
         String uuid = (String) request.getAttribute("uuid");
         List<Friend> friends = userService.getFriends(uuid);
         return data.assembleCallBack(200, "success", friends);
+    }
+
+    @RequestMapping(value = "/info", method = RequestMethod.POST)
+    public String getMyInfo(HttpServletRequest request) {
+        String uuid = (String) request.getAttribute("uuid");
+        User user = userService.getMyInfo(uuid);
+        return data.assembleCallBack(200, "success", user);
+    }
+
+    @RequestMapping(value = "changeInfo", method = RequestMethod.POST)
+    public String changeInfo(@Nullable String describe, @Nullable String oldpassword, @Nullable String newPassword, HttpServletRequest request) {
+        String uuid = (String) request.getAttribute("uuid");
+        String username = (String) request.getAttribute("username");
+        User user = new User();
+        user.setUuid(uuid);
+        if (oldpassword != null) {
+            user = userService.verifyPassword(username, oldpassword);
+            if (user != null) {
+                String md5 = randomString.criptPassWord(newPassword, user.getSalt());
+                user.setPassword(md5);
+            }
+        }
+        if (user != null && describe != null) {
+            user.setDescribe(describe);
+
+        }
+        if (user != null) {
+            if (userService.changeInfo(user) == 1) {
+                return data.successed("");
+            }
+        }
+        return data.failed("");
     }
 }

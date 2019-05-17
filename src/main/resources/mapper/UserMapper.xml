@@ -5,9 +5,21 @@
         select * from user where username = #{username};
     </select>
     <select id="getUserByUuid" resultType="com.chatting.model.User">
-        select uuid, username, img_url from user where uuid= #{uuid};
+        select uuid, username, img_url, `describe` from user where uuid= #{uuid};
     </select>
     <select id="getFriendByUuid" resultType="com.chatting.model.User">
         select * from friend where uuid_first
     </select>
+    <update id="changeInfo" parameterType="com.chatting.model.User">
+        update user
+        <set>
+            <if test="user.describe != null">
+                `describe` = #{user.describe},
+            </if>
+            <if test="user.password != null">
+                 password = #{user.password},
+            </if>
+        </set>
+        where uuid = #{user.uuid};
+    </update>
 </mapper>

@@ -21,6 +21,7 @@ public class UserServiceImpl implements IUserService {
     IFriendDao friendDao;
     public User verifyPassword(String username, String password) {
         User user = dao.getUserByUsername(username);
+        if (user == null) return null;
         String md5 = rs.criptPassWord(password, user.getSalt());
         if(md5.equals(user.getPassword())){
             return user;
@@ -31,5 +32,14 @@ public class UserServiceImpl implements IUserService {
     public List<Friend> getFriends(String uuid) {
         List<Friend> friends = friendDao.getFriendByUuid(uuid);
         return friends;
+    }
+
+    public User getMyInfo(String uuid) {
+
+        return dao.getUserByUuid(uuid);
+    }
+
+    public int changeInfo(User user) {
+        return dao.changeInfo(user);
     }
 }
