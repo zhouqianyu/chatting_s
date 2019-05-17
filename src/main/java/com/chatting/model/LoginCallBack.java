@@ -3,6 +3,15 @@ package com.chatting.model;
 public class LoginCallBack {
     private String token;
     private String img_url;
+    private String uuid;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
     public String getToken() {
         return token;

@@ -32,6 +32,7 @@ public class SessionController {
             LoginCallBack callBack = new LoginCallBack();
             callBack.setToken(result);
             callBack.setImg_url(img_url);
+            callBack.setUuid(user.getUuid());
             return responseData.assembleCallBack(200, "success", callBack);
         } else {
             return responseData.failed("username or password wrong");
