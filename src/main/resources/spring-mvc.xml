@@ -31,7 +31,7 @@
             <bean class="com.chatting.interceptor.TokenInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
-    <!-- 静态资源默认servlet配置 -->
+     <!--静态资源默认servlet配置 -->
     <mvc:default-servlet-handler/>
 
     <!-- 配置jsp 显示ViewResolver -->
