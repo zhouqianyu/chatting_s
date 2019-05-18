@@ -7,9 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c823e7ba-0d97-4fec-b3ba-90369e1a48a2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chatting/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chatting/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/log/log_" beforeDir="false" afterPath="$PROJECT_DIR$/assets/log/log_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/chatting/util/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chatting/util/Token.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -72,11 +71,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/chatting/controller/MessageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="71" column="47" lean-forward="true" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
+            <state relative-caret-position="436">
+              <caret line="66" column="39" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -87,8 +86,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+            <state relative-caret-position="475">
+              <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/chatting/util/Token.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="72" column="25" lean-forward="true" selection-start-line="69" selection-start-column="20" selection-end-line="72" selection-end-column="25" />
+              <folding>
+                <marker date="1558207888000" expanded="true" signature="2567:2769" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="214" column="33" selection-start-line="214" selection-start-column="33" selection-end-line="214" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -168,7 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/chatting/listener/MessageProducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chatting/service/impl/MessageProducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chatting/service/IProducerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chatting/model/MessageLog.java" />
@@ -208,7 +227,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/chatting/model/LoginCallBack.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chatting/controller/SessionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chatting/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/chatting/util/Token.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/chatting/util/ResponseData.java" />
         <option value="&lt;a21ebd15-faf2-48bd-9386-b9ebfcf4a900&gt;/usr/local/apache-tomcat-8.5.20/bin/catalina.sh" />
         <option value="$PROJECT_DIR$/src/main/java/com/chatting/service/impl/MessageService.java" />
@@ -219,6 +237,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/FriendMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/chatting/controller/MessageController.java" />
+        <option value="&lt;a21ebd15-faf2-48bd-9386-b9ebfcf4a900&gt;/src/main/java/com/chatting/controller/MessageController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/chatting/util/Token.java" />
       </list>
     </option>
   </component>
@@ -398,7 +418,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558207562600" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558208143522" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -557,12 +577,12 @@
       <workItem from="1558090898817" duration="1290000" />
       <workItem from="1558154812993" duration="287000" />
       <workItem from="1558169928333" duration="9386000" />
-      <workItem from="1558206756935" duration="516000" />
+      <workItem from="1558206756935" duration="957000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106689000" />
+    <option name="totallyTimeSpent" value="107130000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -587,14 +607,14 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.386747" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.386747" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32891566" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.32891566" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.17228916" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.17228916" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.30963856" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32891566" />
@@ -615,7 +635,7 @@
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="CDI" order="10" />
       <window_info anchor="right" id="Bean Validation" order="11" />
-      <window_info anchor="right" id="Remote Host" order="12" weight="0.2160229" />
+      <window_info anchor="right" id="Remote Host" order="12" visible="true" weight="0.2160229" />
       <window_info anchor="right" id="SciView" order="13" weight="0.3297568" />
     </layout>
     <layout-to-restore>
@@ -976,29 +996,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="225" column="76" selection-start-line="225" selection-start-column="76" selection-end-line="225" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chatting/dao/IMessageDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/chatting/util/Token.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="51" column="32" lean-forward="true" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
-          <folding>
-            <marker date="1558176303000" expanded="true" signature="2565:2761" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1061,20 +1064,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chatting/controller/MessageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="71" column="47" lean-forward="true" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
+        <state relative-caret-position="436">
+          <caret line="66" column="39" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/chatting/util/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="72" column="25" lean-forward="true" selection-start-line="69" selection-start-column="20" selection-end-line="72" selection-end-column="25" />
+          <folding>
+            <marker date="1558207888000" expanded="true" signature="2567:2769" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="214" column="33" selection-start-line="214" selection-start-column="33" selection-end-line="214" selection-end-column="33" />
         </state>
       </provider>
     </entry>
