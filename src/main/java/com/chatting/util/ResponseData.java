@@ -70,6 +70,22 @@ public class ResponseData {
             this.log = log;
             this.user = user;
         }
+
+        public ChattingLog getLog() {
+            return log;
+        }
+
+        public void setLog(ChattingLog log) {
+            this.log = log;
+        }
+
+        public User getUser() {
+            return user;
+        }
+
+        public void setUser(User user) {
+            this.user = user;
+        }
     }
 
 }
