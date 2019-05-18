@@ -1,5 +1,6 @@
 package com.chatting.controller;
 
+import com.chatting.dao.IMessageDao;
 import com.chatting.model.ChattingLog;
 import com.chatting.model.HistoryMessage;
 import com.chatting.service.IMessageService;
@@ -22,7 +23,8 @@ public class MessageController {
     IMessageService service;
     @Resource
     ResponseData responseData;
-
+    @Resource
+    IMessageDao dao;
     @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String sendMessage(@RequestParam String toUuid,
                               @RequestParam String message, HttpServletRequest request) {
@@ -48,5 +50,14 @@ public class MessageController {
         String my_uuid = (String) request.getAttribute("uuid");
         List<ChattingLog> results = service.getMessage(uuid, my_uuid);
         return responseData.assembleCallBack(200, "success", results);
+    }
+
+    @RequestMapping(value = "read", method = RequestMethod.POST)
+    public String read(@RequestParam String uuid, HttpServletRequest request){
+        String my_uuid = (String) request.getAttribute("uuid");
+        if(dao.updateIsDelivery(my_uuid, uuid) > 0){
+            return responseData.successed("");
+        }else
+            return responseData.unKnowError();
     }
 }
