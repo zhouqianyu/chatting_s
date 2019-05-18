@@ -52,7 +52,7 @@ public class MessageController {
         return responseData.assembleCallBack(200, "success", results);
     }
 
-    @RequestMapping(value = "read", method = RequestMethod.POST)
+    @RequestMapping(value = "/read", method = RequestMethod.POST)
     public String read(@RequestParam String uuid, HttpServletRequest request){
         String my_uuid = (String) request.getAttribute("uuid");
         if(dao.updateIsDelivery(my_uuid, uuid) > 0){
