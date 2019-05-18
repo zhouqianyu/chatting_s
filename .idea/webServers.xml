@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="a21ebd15-faf2-48bd-9386-b9ebfcf4a900" name="remote" url="http://39.105.84.114">
-        <fileTransfer host="39.105.84.114" port="2222" accessType="SFTP">
+        <fileTransfer host="39.105.84.114" port="2222" rootFolder="/var/www/chatting" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

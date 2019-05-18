@@ -11,8 +11,9 @@
                substring_index(group_concat(message order by created_at desc ),',', 1),
                max(created_at),is_delivery,uuid_from as friend_uuid, chatting_log.id as id from user,friend                                                                                                          left join chatting_log on friend.uuid_second = chatting_log.uuid_from
         where
-            friend.uuid_first = #{uuid}
-          and friend.uuid_second=user.uuid and message is not null
+              friend.uuid_first = #{uuid}
+        and
+              friend.uuid_second=user.uuid and message is not null
         group by username
         order by created_at desc
     </select>
