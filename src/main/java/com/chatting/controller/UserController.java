@@ -7,7 +7,7 @@ import com.chatting.service.IUserService;
 import com.chatting.util.Cache;
 import com.chatting.util.RandomString;
 import com.chatting.util.ResponseData;
-import com.sun.istack.internal.Nullable;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.jms.core.JmsTemplate;
 
 import org.springframework.stereotype.Controller;
@@ -49,7 +49,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "changeInfo", method = RequestMethod.POST)
-    public String changeInfo(@Nullable String describe, @Nullable String oldpassword, @Nullable String newPassword, HttpServletRequest request) {
+    public String changeInfo(String describe, String oldpassword, String newPassword, HttpServletRequest request) {
         String uuid = (String) request.getAttribute("uuid");
         String username = (String) request.getAttribute("username");
         User user = new User();
