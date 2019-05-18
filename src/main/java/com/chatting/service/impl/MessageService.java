@@ -2,9 +2,11 @@ package com.chatting.service.impl;
 
 import com.chatting.dao.IFriendDao;
 import com.chatting.dao.IMessageDao;
+import com.chatting.dao.IUserDao;
 import com.chatting.model.ChattingLog;
 import com.chatting.model.Friend;
 import com.chatting.model.HistoryMessage;
+import com.chatting.model.User;
 import com.chatting.service.IMessageService;
 import com.chatting.util.ResponseData;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,8 @@ public class MessageService implements IMessageService {
     ResponseData responseData;
     @Resource
     IFriendDao friendDao;
+    @Resource
+    IUserDao userDao;
     public boolean sendMessage(String fromUuid, String toUuid, String message) {
         ChattingLog log = new ChattingLog();
         log.setUuid_from(fromUuid);
@@ -33,8 +37,9 @@ public class MessageService implements IMessageService {
         log.setMessage(message);
         log.setCreated_at(new Date());
         dao.insertNewMessage(log);
+        User user = userDao.getUserByUuid(toUuid);
         if(log.getId()>0) {
-            String result = responseData.assembleMessage(log.getId(), message);
+            String result = responseData.assembleMessage(log, user);
             producer.send("message_to_" + toUuid, result);
             return true;
         }else return false;

@@ -1,5 +1,7 @@
 package com.chatting.util;
 
+import com.chatting.model.ChattingLog;
+import com.chatting.model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
@@ -22,8 +24,8 @@ public class ResponseData {
         CallBackCriteria callBackCriteria = new CallBackCriteria(code, msg, data);
         return parse(callBackCriteria);
     }
-    public String assembleMessage(int id, String message){
-        MessageCriteria criteria = new MessageCriteria(id, message);
+    public String assembleMessage(ChattingLog log, User user){
+        MessageCriteria criteria = new MessageCriteria(log, user);
         return parse(criteria);
     }
 
@@ -61,20 +63,12 @@ public class ResponseData {
         }
     }
     private class MessageCriteria{
-        int id;
-        String message;
+        ChattingLog log;
+        User user;
 
-        public MessageCriteria(int id, String message) {
-            this.id = id;
-            this.message = message;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public String getMessage() {
-            return message;
+        public MessageCriteria(ChattingLog log, User user) {
+            this.log = log;
+            this.user = user;
         }
     }
 

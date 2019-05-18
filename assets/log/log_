@@ -1,1 +1,4 @@
 [framework][02:25:52,825-com.chatting.util.Cache.set(Cache.java:31)][ERROR]:Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool 
+[framework][17:08:51,946-com.chatting.util.Cache.set(Cache.java:31)][ERROR]:Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool 
+[framework][17:20:47,753-com.chatting.util.Cache.set(Cache.java:31)][ERROR]:Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool 
+[framework][17:46:03,236-com.chatting.util.Cache.set(Cache.java:31)][ERROR]:Cannot get Jedis connection; nested exception is redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool 

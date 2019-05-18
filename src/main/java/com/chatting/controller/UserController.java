@@ -7,7 +7,6 @@ import com.chatting.service.IUserService;
 import com.chatting.util.Cache;
 import com.chatting.util.RandomString;
 import com.chatting.util.ResponseData;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.jms.core.JmsTemplate;
 
 import org.springframework.stereotype.Controller;
