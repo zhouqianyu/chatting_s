@@ -1,10 +1,12 @@
 package com.chatting.controller;
 
+import com.baidu.aip.speech.AipSpeech;
 import com.chatting.dao.IMessageDao;
 import com.chatting.model.ChattingLog;
 import com.chatting.model.HistoryMessage;
 import com.chatting.service.IMessageService;
 import com.chatting.util.ResponseData;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/message")
@@ -29,6 +33,8 @@ public class MessageController {
     ResponseData responseData;
     @Resource
     IMessageDao dao;
+    @Resource
+    AipSpeech speech;
     @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String sendMessage(@RequestParam String toUuid,
                               @RequestParam String message, HttpServletRequest request) {
@@ -66,9 +72,22 @@ public class MessageController {
     }
     @RequestMapping(value = "/recognize", method = RequestMethod.POST)
     public String recognize(@RequestParam("file") CommonsMultipartFile file) throws IOException {
-        String path="/var/www/record/"+new Date().getTime()+file.getOriginalFilename();
+        String path = "/var/www/record"+new Date().getTime()+file.getOriginalFilename();
         File newFile = new File(path);
         file.transferTo(newFile);
-        return responseData.successed("语音转文字");
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("dev_pid", 1536);
+        JSONObject res = speech.asr(path, "wav", 16000, map);
+        try {
+            if (res.getInt("err_no") == 0) {
+                return responseData.successed(res.getJSONArray("result").get(0).toString());
+            } else {
+                return responseData.failed(res.getInt("err_no") + "");
+            }
+        }catch (Exception e){
+            return responseData.unKnowError();
+        }finally {
+            newFile.delete();
+        }
     }
 }

@@ -46,4 +46,11 @@
         <property name="maxInMemorySize" value="4096" />
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
+
+    <!--百度语音-->
+    <bean id="aipSpeech" class="com.baidu.aip.speech.AipSpeech">
+        <constructor-arg name="appId" value="16288197"/>
+        <constructor-arg name="apiKey" value="y3hZUlt0ikZuVsilHHLXmu6F"/>
+        <constructor-arg name="secretKey" value="EcjSvaOCy6ly5LxEstNdPsCCn3TQwCfi"/>
+    </bean>
 </beans>
