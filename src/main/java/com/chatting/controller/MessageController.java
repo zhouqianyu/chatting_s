@@ -84,7 +84,7 @@ public class MessageController {
             FileSystemResource resource = new FileSystemResource(newFile);
             MultiValueMap<String, Object> param = new LinkedMultiValueMap<String, Object>();
             param.add("file", resource);
-            String string = template.postForObject("http://39.105.57.231/recognize", param, String.class);
+            String string = template.postForObject("http://39.105.57.231:5000/recognize", param, String.class);
             return responseData.successed(string);
         }catch (Exception e){
             return responseData.unKnowError();
@@ -98,7 +98,7 @@ public class MessageController {
         File newFile = new File(path);
         file.transferTo(newFile);
         HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("dev_pid", 1537);
+        map.put("dev_pid", 1536);
         JSONObject res = speech.asr(path, "wav", 16000, map);
         try {
             if (res.getInt("err_no") == 0) {

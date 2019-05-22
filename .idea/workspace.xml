@@ -7,10 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c823e7ba-0d97-4fec-b3ba-90369e1a48a2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/chatting/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chatting/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chatting/util/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chatting/util/Token.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -76,11 +74,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/chatting/controller/MessageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="86" column="46" lean-forward="true" selection-start-line="86" selection-start-column="46" selection-end-line="86" selection-end-column="46" />
+            <state relative-caret-position="385">
+              <caret line="102" column="13" lean-forward="true" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3506#3522#0" expanded="true" />
+                <element signature="e#3752#3768#0" expanded="true" />
+                <element signature="e#4766#4782#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,10 +88,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/chatting/util/Token.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="79" column="40" lean-forward="true" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+            <state relative-caret-position="273">
+              <caret line="74" column="22" lean-forward="true" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
               <folding>
-                <marker date="1558423602000" expanded="true" signature="2567:2769" ph="..." />
+                <marker date="1558545740000" expanded="true" signature="2565:2761" ph="..." />
               </folding>
             </state>
           </provider>
@@ -435,7 +434,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558545540537" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558547961956" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -596,12 +595,12 @@
       <workItem from="1558169928333" duration="9386000" />
       <workItem from="1558206756935" duration="1635000" />
       <workItem from="1558236421896" duration="4778000" />
-      <workItem from="1558423527032" duration="2133000" />
+      <workItem from="1558423527032" duration="2921000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114719000" />
+    <option name="totallyTimeSpent" value="115507000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -633,9 +632,9 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32891566" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.32891566" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.17228916" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.17228916" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" sideWeight="0.49928468" visible="true" weight="0.30963856" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49928468" weight="0.30963856" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.32891566" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
@@ -1099,21 +1098,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chatting/util/Token.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="79" column="40" lean-forward="true" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+        <state relative-caret-position="273">
+          <caret line="74" column="22" lean-forward="true" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
           <folding>
-            <marker date="1558423602000" expanded="true" signature="2567:2769" ph="..." />
+            <marker date="1558545740000" expanded="true" signature="2565:2761" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/chatting/controller/MessageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="86" column="46" lean-forward="true" selection-start-line="86" selection-start-column="46" selection-end-line="86" selection-end-column="46" />
+        <state relative-caret-position="385">
+          <caret line="102" column="13" lean-forward="true" selection-start-line="102" selection-start-column="13" selection-end-line="102" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3506#3522#0" expanded="true" />
+            <element signature="e#3752#3768#0" expanded="true" />
+            <element signature="e#4766#4782#0" expanded="true" />
           </folding>
         </state>
       </provider>
