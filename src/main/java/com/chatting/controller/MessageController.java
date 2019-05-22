@@ -7,11 +7,15 @@ import com.chatting.model.HistoryMessage;
 import com.chatting.service.IMessageService;
 import com.chatting.util.ResponseData;
 import org.json.JSONObject;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
@@ -71,12 +75,30 @@ public class MessageController {
             return responseData.unKnowError();
     }
     @RequestMapping(value = "/recognize", method = RequestMethod.POST)
-    public String recognize(@RequestParam("file") CommonsMultipartFile file) throws IOException {
-        String path = "/var/www/record"+new Date().getTime()+file.getOriginalFilename();
+    public String recognize(@RequestParam("file") CommonsMultipartFile file){
+        String path = "/var/www/record/"+new Date().getTime()+file.getOriginalFilename();
+        File newFile = new File(path);
+        try {
+            file.transferTo(newFile);
+            RestTemplate template = new RestTemplate();
+            FileSystemResource resource = new FileSystemResource(newFile);
+            MultiValueMap<String, Object> param = new LinkedMultiValueMap<String, Object>();
+            param.add("file", resource);
+            String string = template.postForObject("http://39.105.57.231/recognize", param, String.class);
+            return responseData.successed(string);
+        }catch (Exception e){
+            return responseData.unKnowError();
+        }finally {
+            newFile.delete();
+        }
+    }
+    @RequestMapping(value = "/recognize/api", method = RequestMethod.POST)
+    public String recognizeApi(@RequestParam("file") CommonsMultipartFile file) throws IOException {
+        String path = "/var/www/record/"+new Date().getTime()+file.getOriginalFilename();
         File newFile = new File(path);
         file.transferTo(newFile);
         HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("dev_pid", 1536);
+        map.put("dev_pid", 1537);
         JSONObject res = speech.asr(path, "wav", 16000, map);
         try {
             if (res.getInt("err_no") == 0) {
