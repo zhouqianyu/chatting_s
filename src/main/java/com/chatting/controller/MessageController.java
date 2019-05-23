@@ -112,4 +112,15 @@ public class MessageController {
             newFile.delete();
         }
     }
+    @RequestMapping(value = "/record", method = RequestMethod.POST)
+    public String record(@RequestParam("file") CommonsMultipartFile file){
+        String path = "/var/www/record/"+new Date().getTime()+file.getOriginalFilename();
+        File newFile = new File(path);
+        try {
+            file.transferTo(newFile);
+            return responseData.successed("success");
+        }catch (Exception e){
+            return responseData.unKnowError();
+        }
+    }
 }
